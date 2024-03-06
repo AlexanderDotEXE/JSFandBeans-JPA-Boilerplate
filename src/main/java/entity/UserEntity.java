@@ -3,8 +3,9 @@ package entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user", schema = "test123")
+@Table(name = "user", schema = "gymapp")
 public class UserEntity {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "NutzerID")
     private int nutzerId;
@@ -17,6 +18,9 @@ public class UserEntity {
     @Basic
     @Column(name = "Passwort")
     private String passwort;
+    @Basic
+    @Column(name = "Nachname")
+    private String nachname;
 
     public int getNutzerId() {
         return nutzerId;
@@ -72,5 +76,13 @@ public class UserEntity {
         result = 31 * result + (nachName != null ? nachName.hashCode() : 0);
         result = 31 * result + (passwort != null ? passwort.hashCode() : 0);
         return result;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
     }
 }
